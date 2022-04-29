@@ -1,16 +1,8 @@
 // Redux Toolkit
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface ITodo {
-	id: number
-	title: string
-	isCompleted: boolean
-}
-
-export interface ITodoState {
-	todo_isLoading: boolean
-	todo_list: ITodo[]
-}
+// Interfaces
+import { ITodoState } from '../interface/todo.interface'
 
 const initialState: ITodoState = {
 	todo_isLoading: false,
@@ -18,7 +10,7 @@ const initialState: ITodoState = {
 		{
 			id: 1,
 			title: 'Learn React',
-			isCompleted: false
+			completed: false
 		}
 	]
 }
@@ -33,7 +25,7 @@ export const todoSlice = createSlice({
 		todo_SET_TODO: (state, action: PayloadAction<string>) => {
 			state.todo_list = [
 				...state.todo_list,
-				{ id: Math.random(), title: action.payload, isCompleted: false }
+				{ id: Math.random(), title: action.payload, completed: false }
 			]
 		}
 	}

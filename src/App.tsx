@@ -1,18 +1,17 @@
 // React
 import { MouseEvent, ChangeEvent, useCallback, useState } from 'react'
 
-// Redux
-import { TRootState } from './redux'
-import { useSelector, useDispatch } from 'react-redux'
-
 // Actions
 import { todo_SET_TODO } from './redux/slice/todo.slice'
+
+// Hook
+import { useAppSelector, useAppDispatch } from './hooks'
 
 const App = () => {
 	// Hook
 	const [title, setTitle] = useState<string>('')
-	const todo_list = useSelector((state: TRootState) => state.todo.todo_list)
-	const dispatch = useDispatch()
+	const todo_list = useAppSelector(state => state.todo.todo_list)
+	const dispatch = useAppDispatch()
 
 	/**
 	 * @description Watch any change inside title input
